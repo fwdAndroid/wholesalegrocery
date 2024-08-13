@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wholesalegrocery/screens/main/main_dashboard.dart';
-import 'package:wholesalegrocery/screens/main/pages/home_screen.dart';
+import 'package:wholesalegrocery/screens/home_screen.dart';
 import 'package:wholesalegrocery/utils/color.dart';
 import 'package:wholesalegrocery/widget/socail_button.dart';
 

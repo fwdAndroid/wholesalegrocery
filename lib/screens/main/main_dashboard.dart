@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:wholesalegrocery/screens/main/pages/home_screen.dart';
+import 'package:wholesalegrocery/screens/home_screen.dart';
 import 'package:wholesalegrocery/screens/main/pages/order_detailed_screen.dart';
 import 'package:wholesalegrocery/screens/main/pages/profile_screen.dart';
 import 'package:wholesalegrocery/screens/main/pages/search_screen.dart';
