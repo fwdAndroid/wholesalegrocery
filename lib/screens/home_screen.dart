@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               // Add a SizedBox for spacing between the previous elements and carousel
               SizedBox(height: 20),
-              Container(
+              SizedBox(
                 child: Column(
                   children: [
                     CarouselSlider(
@@ -107,26 +107,26 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                       items: imageUrls
-                          .map((item) => Container(
-                                child: Container(
-                                  margin: EdgeInsets.all(5.0),
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(5.0)),
-                                      child: Stack(
-                                        children: <Widget>[
-                                          Image.network(
-                                            item,
-                                            fit: BoxFit.cover,
-                                            width: 1000.0,
-                                          ),
-                                        ],
-                                      )),
-                                ),
-                              ))
+                          .map(
+                            (item) => Container(
+                              margin: EdgeInsets.all(5.0),
+                              child: ClipRRect(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5.0)),
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Image.network(
+                                        item,
+                                        fit: BoxFit.cover,
+                                        width: 1000.0,
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                          )
                           .toList(),
                     ),
-                    SizedBox(height: 10), // Add spacing
+                    const SizedBox(height: 10), // Add spacing
 
                     // Custom Indicator
                     Row(
@@ -136,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Container(
                           width: 12.0,
                           height: 12.0,
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 2.0),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,

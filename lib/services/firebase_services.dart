@@ -32,4 +32,18 @@ class FirebaseServices {
     });
     return products;
   }
+
+  //Brands
+  Future<List<Map<String, dynamic>>> fetchBrands() async {
+    List<Map<String, dynamic>> products = [];
+    await FirebaseFirestore.instance
+        .collection('brands')
+        .get()
+        .then((querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        products.add(doc.data());
+      });
+    });
+    return products;
+  }
 }
