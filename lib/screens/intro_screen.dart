@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wholesalegrocery/screens/auth/google_screen.dart';
 import 'package:wholesalegrocery/screens/home_screen.dart';
 import 'package:wholesalegrocery/utils/color.dart';
 import 'package:wholesalegrocery/widget/socail_button.dart';
@@ -17,25 +18,21 @@ class _IntroScreenState extends State<IntroScreen> {
       backgroundColor: colorWhite,
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 150,
           ),
           Center(
             child: Text(
               "Lets get connected",
               style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30),
+                  color: textColor, fontWeight: FontWeight.bold, fontSize: 30),
             ),
           ),
           Center(
             child: Text(
               "Easy & safe way to connect",
               style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w200,
-                  fontSize: 16),
+                  color: textColor, fontWeight: FontWeight.w200, fontSize: 16),
             ),
           ),
           const SizedBox(
@@ -52,20 +49,36 @@ class _IntroScreenState extends State<IntroScreen> {
             child: Text(
               "Create an account or login to the app",
               style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w200,
-                  fontSize: 16),
+                  color: textColor, fontWeight: FontWeight.w200, fontSize: 16),
             ),
           ),
           const SizedBox(
             height: 20,
           ),
           SaveButton(
-              title: "Continue via Number",
+              title: "Continue via Google",
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (builder) => HomeScreen()));
-              })
+                    MaterialPageRoute(builder: (builder) => GoogleAuth()));
+              }),
+          const SizedBox(
+            height: 20,
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (builder) => HomeScreen()));
+            },
+            child: Center(
+              child: Text(
+                "Continue",
+                style: TextStyle(
+                    color: textColor,
+                    fontWeight: FontWeight.w200,
+                    fontSize: 16),
+              ),
+            ),
+          ),
         ],
       ),
     );
