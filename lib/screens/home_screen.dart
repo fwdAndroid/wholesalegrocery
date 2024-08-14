@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:wholesalegrocery/screens/details/product_details.dart';
 import 'package:wholesalegrocery/services/firebase_services.dart';
 import 'package:wholesalegrocery/utils/color.dart';
 import 'package:wholesalegrocery/widget/app_bar_textfield.dart';
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: MyDrawer(),
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Color(0xffee7e25)),
+        iconTheme: IconThemeData(color: maintColor),
         title: AppBarTextField(
           hintText: 'What are you looking for?',
           prefixIcon: Icons.search,
@@ -51,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Icon(Icons.shopping_bag, color: Color(0xffee7e25)),
+            child: Icon(Icons.shopping_bag, color: maintColor),
           )
         ],
       ),
@@ -163,77 +164,103 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, index) {
                         var product = productList[index];
                         return Container(
-                          color: Colors.white30,
-                          child: Card(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Center(
-                                  child: Image.network(
-                                    product['productImages'],
-                                    height: 80,
-                                    width: MediaQuery.of(context).size.width,
+                          color: colorWhite,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (builder) => ProductDetails(
+                                          category: product['category'],
+                                          discountPrice:
+                                              product['discountPrice']
+                                                  .toString(),
+                                          productDescription:
+                                              product['productDescription'],
+                                          productImages:
+                                              product['productImages'],
+                                          productName: product['productName'],
+                                          productPrice: product['productPrice']
+                                              .toString(),
+                                          quantity:
+                                              product['quantity'].toString(),
+                                          uuid: product['uuid'],
+                                          subCategory:
+                                              product['subCategory'])));
+                            },
+                            child: Card(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Center(
+                                    child: Image.network(
+                                      product['productImages'],
+                                      height: 80,
+                                      width: MediaQuery.of(context).size.width,
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                    margin: EdgeInsets.only(left: 10),
-                                    child: Text(
-                                      product['productName'],
-                                      style: TextStyle(fontSize: 12),
-                                    )),
-                                Container(
-                                  margin: EdgeInsets.only(left: 10),
-                                  child: Text(
-                                    product['quantity'].toString(),
-                                    style: TextStyle(
-                                        color: textColor, fontSize: 12),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 10),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "\$" +
-                                            product['productPrice'].toString(),
-                                        style: TextStyle(
-                                            color: redColor, fontSize: 12),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        "\$" +
-                                            product['discountPrice'].toString(),
-                                        style: TextStyle(
-                                            decoration:
-                                                TextDecoration.lineThrough,
-                                            color: decColor,
-                                            fontSize: 12),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 3,
-                                ),
-                                Container(
-                                    margin: EdgeInsets.only(left: 10),
-                                    decoration: BoxDecoration(
-                                        color: redColor,
-                                        shape: BoxShape.rectangle,
-                                        borderRadius:
-                                            BorderRadius.circular(100)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5.0),
+                                  Container(
+                                      margin: const EdgeInsets.only(left: 10),
                                       child: Text(
-                                        product['discountPrice'].toString() +
-                                            "%off",
-                                        style: TextStyle(
-                                            color: colorWhite, fontSize: 12),
-                                      ),
-                                    ))
-                              ],
+                                        product['productName'],
+                                        style: TextStyle(fontSize: 12),
+                                      )),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 10),
+                                    child: Text(
+                                      product['quantity'].toString(),
+                                      style: TextStyle(
+                                          color: textColor, fontSize: 12),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 10),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "\$" +
+                                              product['productPrice']
+                                                  .toString(),
+                                          style: TextStyle(
+                                              color: redColor, fontSize: 12),
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          "\$" +
+                                              product['discountPrice']
+                                                  .toString(),
+                                          style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                              color: decColor,
+                                              fontSize: 12),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 3,
+                                  ),
+                                  Container(
+                                      margin: const EdgeInsets.only(left: 10),
+                                      decoration: BoxDecoration(
+                                          color: redColor,
+                                          shape: BoxShape.rectangle,
+                                          borderRadius:
+                                              BorderRadius.circular(100)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text(
+                                          product['discountPrice'].toString() +
+                                              "%off",
+                                          style: TextStyle(
+                                              color: colorWhite, fontSize: 12),
+                                        ),
+                                      ))
+                                ],
+                              ),
                             ),
                           ),
                         );

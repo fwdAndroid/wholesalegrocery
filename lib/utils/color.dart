@@ -7,3 +7,4 @@ final maintColor = Color(0xffee7e25);
 final noactiveColor = Color.fromARGB(255, 160, 135, 115);
 final textColor = Colors.black;
 final decColor = Colors.grey;
+final buttonColor = Colors.green;
