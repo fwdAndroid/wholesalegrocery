@@ -130,6 +130,20 @@ class _ProductDetailsState extends State<ProductDetails> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
+              widget.category,
+              style: GoogleFonts.poppins(fontSize: 18, color: maintColor),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              widget.subCategory,
+              style: GoogleFonts.poppins(fontSize: 14),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
               widget.productDescription,
               style: GoogleFonts.poppins(fontSize: 18),
             ),
