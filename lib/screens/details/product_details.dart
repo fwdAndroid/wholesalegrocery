@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wholesalegrocery/screens/details/product_cart.dart';
 import 'package:wholesalegrocery/utils/color.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -157,7 +158,22 @@ class _ProductDetailsState extends State<ProductDetails> {
                     fixedSize: Size(MediaQuery.of(context).size.width, 50),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5))),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => ProductCart(
+                                productDescription: widget.productDescription,
+                                productImages: widget.productImages,
+                                productName: widget.productName,
+                                productPrice: widget.productPrice.toString(),
+                                discountPrice: widget.discountPrice.toString(),
+                                category: widget.category,
+                                subCategory: widget.subCategory,
+                                quantity: widget.quantity,
+                                uuid: widget.uuid,
+                              )));
+                },
                 child: Text(
                   "Add To Cart",
                   style: GoogleFonts.poppins(fontSize: 14, color: colorWhite),

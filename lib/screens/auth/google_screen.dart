@@ -21,7 +21,12 @@ class _GoogleAuthState extends State<GoogleAuth> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset("assets/logo.png"),
+          ),
           isGoogle
               ? Center(
                   child: CircularProgressIndicator(
