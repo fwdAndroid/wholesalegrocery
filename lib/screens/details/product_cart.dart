@@ -238,6 +238,7 @@ class _ProductCartState extends State<ProductCart> {
                           .collection("orders")
                           .doc(uuid)
                           .set({
+                        "uuid": uuid,
                         "productDescription": widget.productDescription,
                         "price": totalPrice,
                         "status": "order",
